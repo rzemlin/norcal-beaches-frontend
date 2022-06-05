@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
     <Header />
-    <BeachForm />
+    <BeachForm Beaches={beaches}/>
     <BeachContainer />
     </div>
   );
