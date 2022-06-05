@@ -1,9 +1,18 @@
 import React from 'react'
 
-function BeachCard() {
+function BeachCard({id, name, location, img_url, description}) {
+    
     return (
         <div>
-           This is where I will dynamically render json data stored in this.state
+           <li>
+               <figure>
+                   <img src={img_url} alt={`${name}}`} />
+               </figure>
+               <article>
+                   <h4>{name}</h4>
+                   <p>{description}</p>
+               </article>
+           </li>
         </div>
     )
 }

@@ -1,9 +1,11 @@
 import React from 'react'
 
-function BeachForm() {
+function BeachForm(beaches) {
+    
+    console.log(beaches)
     return (
         <div>
-            Beach Form
+            BeachForm
         </div>
     )
 }
