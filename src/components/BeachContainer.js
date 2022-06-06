@@ -5,7 +5,7 @@ function BeachContainer({beaches}) {
     const beachCardItems = beaches.map((beach) => <BeachCard {...beach} key={beach.id}/> )
     return (
         <section>
-            <h2>beaches</h2>
+            <h2>Nor*Cal Beaches</h2>
             <div className="filter">
                 <button>All</button>
                 <button>Marin</button>

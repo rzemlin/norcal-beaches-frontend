@@ -1,9 +1,13 @@
-import React from 'react'
+import React, {useState, useEffect}from 'react'
 import Header from './components/Header'
 import BeachForm from './components/BeachForm';
 import BeachContainer from './components/BeachContainer'
 import beachData from './beachData'
 function App() {
+  useEffect(() => {
+    console.log('side effect happened')
+  })
+  
   return (
     <div className="App">
     <Header />
