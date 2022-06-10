@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 
-const BeachEditForm = ({ beachId, completeEditing }) => {
+const BeachEditForm = ({ beachId, onAddBeach }) => {
   const [formData, setFormData] = useState({
     name: "",
     location: "",
@@ -24,9 +24,7 @@ const BeachEditForm = ({ beachId, completeEditing }) => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const onAddBeach = (newBeach) => {
-    setBeachId((beaches) => [...beaches, newBeach]);
-  };
+  
 
 
 

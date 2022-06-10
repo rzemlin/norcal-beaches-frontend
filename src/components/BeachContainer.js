@@ -2,29 +2,31 @@ import BeachCard from './BeachCard';
 import React, {useState} from 'react';
 
 
-const BeachContainer = ({ beaches, enterBeachEditModeFor }) => {
+const BeachContainer = ({ beaches, onDeleteBeach }) => {
+    
     const [searchQuery, setSearchQuery] = useState("");
   
     const searchResults = beaches.filter((beach) => {
-      return beach.name.toLowerCase().includes(searchQuery.toLowerCase());
+    
+      return beach.location.toLowerCase().includes(searchQuery.toLowerCase());
     });
   
     const filteredBeaches = searchResults.map((beach) => {
-      return (
-        <BeachCard
-          key={beach.id}
-          beach={beach}
-          enterBeachEditModeFor={enterBeachEditModeFor}
-        />
-      );
-    });
-  
-    const handleOnChange = (e) => setSearchQuery(e.target.value);
-  
+        return (
+          <BeachCard
+            key={beach.id}
+            beach={beach}
+            onDeleteBeach={onDeleteBeach}
+          />
+        );
+      });
+    
+      const handleOnChange = (e) => setSearchQuery(e.target.value);
+
     return (
       <section>
         <h2>Nor*Cal Beaches</h2>
-  
+
         <div className="filter">
           <button>All</button>
           <button>Marin</button>

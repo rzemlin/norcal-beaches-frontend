@@ -1,4 +1,5 @@
 import React, {useState, useEffect}from 'react'
+import { Switch, Route } from 'react-router-dom';
 import Header from './components/Header'
 import BeachForm from './components/BeachForm';
 import BeachContainer from './components/BeachContainer'
@@ -7,7 +8,7 @@ import BeachEditForm from './components/BeachEditForm'
 
 const App = () => {
   const [beaches, setBeaches] = useState([]);
-  const [beachId, setBeachId] = useState(null);
+  const [beachId, setBeachId] = [useState(null)];
 
   useEffect(() => {
     fetch("http://localhost:4000/api/v1/beaches")
@@ -18,35 +19,34 @@ const App = () => {
   const onAddBeach = (newBeach) => {
     setBeachId((beaches) => [...beaches, newBeach]);
   };
-
-  const completeEditing = () => {
-    setBeachId(null);
+  
+  const onUpdateBeach = (alteredBeach) => {
+    const updatedBeach = beaches.map((beach) => {
+      if (beach.id === alteredBeach.id) {
+        return alteredBeach;
+      } else {
+        return beach;
+      }
+    });
+    setBeaches(alteredBeach);
   };
 
-  const enterBeachEditModeFor = (beachId) => {
-    setBeachId(beachId);
+  const onDeleteBeach = (deletedBeach) => {
+    const updatedBeaches = beaches.filter(
+      (beach) => beach.id !== deletedBeach.id
+    );
+    setBeaches(updatedBeaches);
   };
 
-  const renderForm = () => {
-    if (beachId) {
-      return (
-        <BeachEditForm
-          beachId={beachId}
-          completeEditing={completeEditing}
-        />
-      );
-    } else {
-      return <BeachForm onAddBeach={onAddBeach} />;
-    }
-  };
+  
   return (
     <div className="App">
-    <Header />
-    <BeachContainer beaches={beaches} />
-    {renderForm()}
-    <BeachForm beaches={beaches}/>
-    </div>
-  );
+        <Header />
+        <BeachContainer beaches={beaches} onDeleteBeach={onDeleteBeach}/>
+        <BeachEditForm onUpdateBeach={onUpdateBeach}/>
+        <BeachForm onAddBeach={onAddBeach}/>
+        </div>
+    );
   }
 
 
