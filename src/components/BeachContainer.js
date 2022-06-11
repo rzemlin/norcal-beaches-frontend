@@ -1,44 +1,15 @@
-import BeachCard from './BeachCard';
 import React, {useState} from 'react';
+import BeachCard from './BeachCard';
 
+function BeachContainer(beaches) {
+  console.log(beaches)
 
-const BeachContainer = ({ beaches, onDeleteBeach }) => {
-    
-    const [searchQuery, setSearchQuery] = useState("");
-  
-    const searchResults = beaches.filter((beach) => {
-    
-      return beach.location.toLowerCase().includes(searchQuery.toLowerCase());
-    });
-  
-    const filteredBeaches = searchResults.map((beach) => {
-        return (
-          <BeachCard
-            key={beach.id}
-            beach={beach}
-            onDeleteBeach={onDeleteBeach}
-          />
-        );
-      });
-    
-      const handleOnChange = (e) => setSearchQuery(e.target.value);
+const allBeaches =  beaches.map((beach) => (
+  <BeachCard beach={beach} />
+));
 
-    return (
-      <section>
-        <h2>Nor*Cal Beaches</h2>
-
-        <div className="filter">
-          <button>All</button>
-          <button>Marin</button>
-          <button>Sonoma</button>
-          <button>Mendocino</button>
-          <button>Humboldt</button>
-        </div>
-        <input type="text" placeholder="Search..." onChange={handleOnChange} />
-  
-        <ul className="cards">{filteredBeaches}</ul>
-      </section>
-    );
-  };
-  
+  return )
+    <div>(allBeaches)</div>;
+    )
+  }
   export default BeachContainer;

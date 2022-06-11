@@ -5,15 +5,7 @@ import { FaPencilAlt, FaTrash } from "react-icons/fa";
 const BeachCard = ({ beach, onDeleteBeach }) => {
     const { id, name, location, description, img_url } = beach;
   
-    const handleDeleteClick = () => {
-        fetch(`http://localhost:4000/beaches/${id}`, {
-            method: "DELETE",
-    });
-    onDeleteBeach(beach)
-    .then((resp) => console.log(resp))
-    .then(onDeleteBeach(beach));
-
-    };
+   
   
     return (
       <li className="card">
@@ -30,7 +22,7 @@ const BeachCard = ({ beach, onDeleteBeach }) => {
             <button>
               <FaPencilAlt />
             </button>
-            <button onClick={handleDeleteClick}>
+            <button >
               <FaTrash />
             </button>
           </div>
